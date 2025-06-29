@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: #fff;
+}
+
+.tela-chat {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f4f4f4; /* Um fundo suave para a tela inteira */
+}
+
+/* Área que contém o círculo inicial OU as mensagens do chat */
+.chat-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinha as mensagens na parte inferior quando visíveis */
+  overflow: hidden; /* Para conter as mensagens */
+}
+
+.centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Ocupa o espaço disponível para centralizar o círculo */
+}
+
+.circulo {
+  width: 180px;
+  height: 180px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: flex; /* Para centralizar algo dentro dele, se necessário */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em; /* Exemplo de texto dentro do círculo */
+  color: #aaa;
+  text-align: center;
+  transition: opacity 0.5s ease-out, height 0.5s ease-out; /* Para animação suave */
+}
+
+.circulo.hidden {
+  opacity: 0;
+  height: 0;
+  pointer-events: none; /* Impede interação quando oculto */
+  margin:0; /* Remove margens quando oculto */
+  padding:0; /* Remove preenchimento quando oculto */
+}
+
+.chat-messages-area {
+  flex-grow: 1; /* Ocupa o espaço deixado pelo círculo */
+  overflow-y: auto; /* Adiciona scroll se as mensagens excederem o espaço */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaçamento entre as mensagens */
+  opacity: 0; /* Começa invisível */
+  transition: opacity 0.5s ease-in; /* Para animação suave de aparecimento */
+}
+
+.chat-messages-area.visible {
+  opacity: 1;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+.ia-message {
+  background-color: #e9e9eb;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+}
+
+
+.entrada-chat {
+  display: flex;
+  align-items: center;
+  padding-top: 15px; /* Aumentado para dar mais espaço */
+  padding-bottom: 10px; /* Espaço abaixo da entrada */
+  border-top: 1px solid #ddd; /* Linha sutil acima da entrada */
+  background-color: #fff; /* Fundo branco para a área de entrada */
+}
+
+.entrada-chat input {
+  flex: 1;
+  border: none;
+  padding: 14px 18px;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: #f2f2f2;
+  outline: none;
+  margin-right: 10px;
+}
+
+.entrada-chat button {
+  background: #4CAF50; /* Verde do exemplo */
+  border: none;
+  color: white;
+  font-size: 20px; /* Tamanho do ícone/texto do botão */
+  width: 48px; /* Largura fixa */
+  height: 48px; /* Altura fixa para manter o círculo */
+  border-radius: 50%; /* Botão circular */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.entrada-chat button:hover {
+  background: #45a049; /* Verde um pouco mais escuro no hover */
+}
